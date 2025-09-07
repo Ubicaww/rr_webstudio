@@ -350,6 +350,7 @@ body {
 .portfolio-link {
 	display: block;
 	text-decoration: none;
+	position: relative;
 }
 
 .portfolio-item img {
@@ -380,12 +381,11 @@ body {
 
 .portfolio-card {
 	flex: 1 1 30%;
-	position: relative;
 }
 
 .portfolio-card-title {
 	position: absolute;
-	bottom: 0;
+	top: 0;
 	left: 0;
 	right: 0;
 	color: #fff;
@@ -397,10 +397,10 @@ body {
 	padding: 63px 24px;
 	align-content: center;
 	opacity: 0;
-	transition: opacity 0.4s ease, transform 0.4s ease;
+	transition: opacity 0.4s ease;
+	max-height: 294px;
 }
 
-.portfolio-card:hover .portfolio-card-title {
+.portfolio-link:hover .portfolio-card-title {
 	opacity: 1;
-	transform: translateY(0);
 }
