@@ -40,6 +40,14 @@ body {
 	color: #212121;
 }
 
+.hidden {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
 .container {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -53,6 +61,8 @@ body {
 	padding: 25px 0;
 	font-weight: 500;
 	letter-spacing: 0.3px;
+	position: relative;
+	z-index: 10;
 }
 
 .header-container {
@@ -93,11 +103,11 @@ body {
 
 .vipadashka {
 	position: relative;
-	display: inline-block;
 }
 
 
-.filters-menu, .filters-submenu {
+.filters-menu,
+.filters-submenu {
 	position: absolute;
 	background: #fff;
 	padding: 5px 10px;
@@ -111,9 +121,9 @@ body {
 }
 
 .filters-submenu {
-	top: 50%;
+	top: 0;
 	right: 100%;
-	transform: translate(-13px, -50%);
+	transform: translate(-13px, 0%);
 }
 
 .vipadashka:hover .filters-menu,
@@ -203,7 +213,7 @@ body {
 
 .about-cards {
 	flex: 1 1 20%;
-	padding-top: 120px;
+	padding-top: 150px;
 	position: relative;
 }
 
@@ -216,25 +226,24 @@ body {
 }
 
 .card1::before {
-	background: url('../images/antenna1.svg') no-repeat center, linear-gradient(rgba(245, 244, 250, 1), rgba(245, 244, 250, 1));
+	background: url('../images/antenna1.svg') no-repeat center, #f5f4fa;
 }
 
 .card2::before {
-	background: url('../images/clock1.svg') no-repeat center, linear-gradient(rgba(245, 244, 250, 1), rgba(245, 244, 250, 1));
+	background: url('../images/clock1.svg') no-repeat center, #f5f4fa;
 }
 
 .card3::before {
-	background: url('../images/diagram1.svg') no-repeat center, linear-gradient(rgba(245, 244, 250, 1), rgba(245, 244, 250, 1));
+	background: url('../images/diagram1.svg') no-repeat center, #f5f4fa;
 }
 
 .card4::before {
-	background: url('../images/astronaut1.svg') no-repeat center, linear-gradient(rgba(245, 244, 250, 1), rgba(245, 244, 250, 1));
+	background: url('../images/astronaut1.svg') no-repeat center, #f5f4fa;
 }
 
 .about h3 {
 	font-weight: 700;
 	text-transform: uppercase;
-	margin-top: 30px;
 }
 
 .about p {
@@ -323,18 +332,23 @@ body {
 .team-card-link {
 	display: block;
 	height: 260px;
+	overflow: hidden;
 }
 
 .team-card-link img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	transition: transform 0.3s ease;
+}
+
+.team-card-link:hover img {
+	transform: scale(1.1);
 }
 
 .team-card-inner {
-	padding: 30px;
+	padding: 30px 30px 0;
 	font-size: 16px;
-	background: #fff;
 }
 
 .team-card-title {
@@ -346,6 +360,89 @@ body {
 	margin-top: 10px;
 }
 
+.socials {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin: 16px 32px 30px;
+}
+
+.socials li {
+	width: 44px;
+	height: 44px;
+	flex: 1 1 20%;
+}
+
+.socials a {
+	color: #AFB1B8;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	transition: all 0.2s ease;
+}
+
+.socials svg {
+	width: 20px;
+	height: 20px;
+}
+
+.socials a:hover {
+	background: #2196F3;
+	color: #fff;
+}
+
+/* CUSTOMERS */
+.customers {
+	padding: 94px 0;
+	text-align: center;
+	letter-spacing: 0.5px;
+}
+
+.customers h2 {
+	font-weight: 700;
+	font-size: 36px;
+}
+
+.customers-logos {
+	display: flex;
+	gap: 30px;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+.customers-logos li {
+	width: 170px;
+	height: 92px;
+	flex: 1 1 15%;
+	border: #AFB1B8 1px solid;
+	border-radius: 4px;
+}
+
+.customers-logos a {
+	color: #AFB1B8;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	transition: all 0.2s ease;
+}
+
+.customers-logos svg {
+	height: 60px;
+	width: 106px;
+}
+
+.customers-logos a:hover {
+	border: #2196F3 1px solid;
+	color: #2196F3;
+}
+
+/* FOOTER */
+
 .footer {
 	background: #2F303A;
 	padding: 60px 0;
@@ -353,8 +450,40 @@ body {
 	letter-spacing: 0.8px;
 }
 
+.footer-container {
+	display: flex;
+	gap: 130px;
+}
+
 .footer-logo {
 	display: inline-block;
+}
+
+.footer-right ul {
+	margin: 20px auto;
+}
+
+.footer-right li {
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 50%;
+}
+
+.footer-right a {
+	color: #FFFFFF;
+}
+
+.footer-right h3 {
+	font-size: 14px;
+	font-weight: 700;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	margin-top: 12px;
+}
+
+.footer-left,
+.footer-right {
+	display: flex;
+	flex-direction: column;
 }
 
 .footer-contacts {
@@ -362,7 +491,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 9px;
-	align-items: flex-start;
 }
 
 .footer-contacts a {
@@ -372,7 +500,6 @@ body {
 }
 
 .footer-contacts a:hover {
-	color: #FFFFFF;
 	opacity: 1;
 }
 
